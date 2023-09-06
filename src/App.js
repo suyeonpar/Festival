@@ -8,9 +8,16 @@ import Example3 from "./pages/Example3";
 import Example4 from "./pages/Example4";
 import Datepicker from "./pages/Datepicker";
 
-
-
 function App() {
+
+  const light = {
+    colors : {
+      Primary : "#fff8ef",
+      Secondary : "#102C57",
+      BgColor : "#e9f1f6"
+    }
+  }
+
   return (
     <>
     <GlobalStyle />
@@ -21,6 +28,7 @@ function App() {
     <Routes>
       {/* <Route path="/" element={<Main/>}></Route> */}
       <Route path="/" element={<Example2/>}></Route>
+      <Route path="/main" element={<Main/>}></Route>
       <Route path="/ex" element={<Example/>}></Route>
       <Route path="/ex3" element={<Example3/>}></Route>
       <Route path="/ex4" element={<Example4/>}></Route>
