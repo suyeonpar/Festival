@@ -5,8 +5,7 @@ import dataList from './../data/data'
 import { NavLink } from 'react-router-dom';
 
 const Content = styled.div`
-  /* background-color:  ${(props) => props.theme.BgColor}; */
-  background-color: #c7fff8;
+  background-color:  ${(props) => props.theme.colors.BgColor};
   width: 100%;
   padding: 12px 2% 50px 2%;
   overflow: hidden;
@@ -79,7 +78,7 @@ function Main() {
                           <li>주요장소 : {e.MAIN_PLACE}</li>
                         </ul>
                       </NavLink>
-                      
+
                   </ContentItem>
                 )
               })

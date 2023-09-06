@@ -7,7 +7,9 @@ import Example2 from "./pages/Example2";
 import Example3 from "./pages/Example3";
 import Example4 from "./pages/Example4";
 import Datepicker from "./pages/Datepicker";
-//import { ThemeProvider } from "styled-components";
+import { useState } from "react";
+import { ThemeProvider } from "styled-components";
+import Aside from "./pages/Aside";
 
 function App() {
 
@@ -18,13 +20,27 @@ function App() {
       BgColor : "#e9f1f6"
     }
   }
+  const dark = {
+    colors : {
+      Primary : "#102C57",
+      Secondary : "#fff8ef",
+      BgColor : "#333"
+    }
+  }
+  const [themeConfig, setThemeConfig] = useState("light");
+  const DarkMode = themeConfig === 'light' ? light : dark;
+  const ThemeSelect = () => {
+    setThemeConfig(themeConfig === 'light' ? 'dark' : 'light')
+  }
+
   return (
     <>
+    <ThemeProvider theme={DarkMode}>
     <GlobalStyle />
-    <ul>
+    {/* <ul>
       <li><NavLink to="/">홈</NavLink></li>
       <li><NavLink to="/detail">디테일</NavLink></li>
-    </ul>
+    </ul> */}
     <Routes>
       <Route path="/" element={<Main/>}></Route>
       <Route path="/ex" element={<Example/>}></Route>
@@ -34,6 +50,8 @@ function App() {
       <Route path="/date" element={<Datepicker/>}></Route>
       <Route path="/detail/:seq" element={<Detail/>}></Route>
     </Routes>
+    <Aside ThemeSelect={ThemeSelect} themeConfig={themeConfig} />
+    </ThemeProvider>
     </>
   );
 }
