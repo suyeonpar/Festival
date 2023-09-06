@@ -7,6 +7,7 @@ import Example2 from "./pages/Example2";
 import Example3 from "./pages/Example3";
 import Example4 from "./pages/Example4";
 import Datepicker from "./pages/Datepicker";
+//import { ThemeProvider } from "styled-components";
 
 function App() {
 
@@ -17,7 +18,6 @@ function App() {
       BgColor : "#e9f1f6"
     }
   }
-
   return (
     <>
     <GlobalStyle />
@@ -26,14 +26,13 @@ function App() {
       <li><NavLink to="/detail">디테일</NavLink></li>
     </ul>
     <Routes>
-      {/* <Route path="/" element={<Main/>}></Route> */}
-      <Route path="/" element={<Example2/>}></Route>
-      <Route path="/main" element={<Main/>}></Route>
+      <Route path="/" element={<Main/>}></Route>
       <Route path="/ex" element={<Example/>}></Route>
+      <Route path="/ex2" element={<Example2/>}></Route>
       <Route path="/ex3" element={<Example3/>}></Route>
       <Route path="/ex4" element={<Example4/>}></Route>
       <Route path="/date" element={<Datepicker/>}></Route>
-      <Route path="/detail" element={<Detail/>}></Route>
+      <Route path="/detail/:seq" element={<Detail/>}></Route>
     </Routes>
     </>
   );
