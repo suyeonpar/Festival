@@ -17,14 +17,18 @@ function App() {
     colors : {
       Primary : "#fff8ef",
       Secondary : "#102C57",
-      BgColor : "#e9f1f6"
+      BgColor : "#e9f1f6",
+      TxtColor : "#000",
+      ContentBg : "#fff"
     }
   }
   const dark = {
     colors : {
       Primary : "#102C57",
       Secondary : "#fff8ef",
-      BgColor : "#333"
+      BgColor : "#333",
+      Color : "#e9e9e9",
+      ContentBg : "#272929"
     }
   }
   const [themeConfig, setThemeConfig] = useState("light");

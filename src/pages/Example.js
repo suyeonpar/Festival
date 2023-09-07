@@ -17,7 +17,7 @@ function Example() {
         return e.job === job
     }
   })
-
+  
   const FilterJob = [...new Set(data.map(e => e.job))];
   console.log(FilterJob)
 
