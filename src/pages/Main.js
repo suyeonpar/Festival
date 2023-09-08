@@ -88,17 +88,11 @@ const Pagination = styled.div`
     border: 1px solid #ddd;
     border-radius: 5px;
     cursor: pointer;
+    padding: 5px 20px;
     &.on{
       background-color: violet;
       font-weight: bold;
-    }
-    &.on a{
       color: #fff;
-    }
-    a{
-      display: inline-block;
-      width: 100%;
-      padding: 5px 20px;
     }
   }
 }
@@ -107,6 +101,7 @@ const Pagination = styled.div`
 function Main() {
 
   const [data, setData] = useState();
+  const [allDate, setAllData] = useState();
   const list = 10;
   const [page, setPage] = useState(1);
   const [totalCnt, setTotalCnt] = useState(0);
@@ -114,19 +109,49 @@ function Main() {
   const pagination = 5;
   const totalPage = Math.floor(totalCnt / list);
 
+  let startPage, endPage; //변수는 지정해주지만 값은 주지 않겠다
+
+  const currentBlock = Math.ceil(page / pagination); //ceil 소수점 올려준다
+  // 현재 페이지가 1 / 5 > 0.2 1 2 3 4 5
+  startPage = (currentBlock - 1) * pagination + 1;
+  endPage = startPage + pagination - 1;
+
+  if(endPage > totalPage){
+    endPage = totalPage;
+  }
+
+  const PrevBlock = () =>{
+    if(startPage > 1){
+      setPage(startPage - pagination);
+    }
+  }
+  const NextBlock = () =>{
+    if(endPage < totalPage){
+      setPage(startPage + pagination);
+    }
+  }
+
   const PageList = [];
-  for(let i = 0; i < totalPage; i++){
+  for(let i = startPage; i <= endPage; i++){
     PageList.push(
-      <li key={i}>
-        <NavLink to='/' className={(page === i+1 ? 'on' : '')} onClick={()=>{setPage(i+1)}}>{i+1}</NavLink>
+      <li key={i} onClick={()=>{setPage(i)}}>
+        {i}
       </li>
     )
   }
 
   useEffect(()=>{
+     axios.get(`https://apis.data.go.kr/6260000/FestivalService/getFestivalKr?serviceKey=${process.env.REACT_APP_APIKEY}&pageNo=1&numOfRows=100&resultType=json`).then(function(res){
+      setAllData(res.data.getFestivalKr.item);
+    })
+    //console.log(data)
+  },[])
+
+  useEffect(()=>{
      axios.get(`https://apis.data.go.kr/6260000/FestivalService/getFestivalKr?serviceKey=${process.env.REACT_APP_APIKEY}&pageNo=${page}&numOfRows=10&resultType=json`).then(function(res){
       setData(res.data.getFestivalKr.item)
       setTotalCnt(res.data.getFestivalKr.totalCount);
+      // setTotalCnt(500); 테스트용으로 만든거
     })
     //console.log(data)
   },[page])
@@ -137,8 +162,8 @@ function Main() {
   }) //gugun이 전체와 같다면 
 
   //걸러준걸 보여주는 함수
-  const FilterGugun = [...new Set(data && data.map(e => e.GUGUN_NM))];
-  console.log(FilterGugun)
+  const FilterGugun = [...new Set(allDate && allDate.map(e => e.GUGUN_NM))];
+  //console.log(FilterGugun)
   const [isActive, setIsActive] = useState(-1);
   const [index, setIndex] = useState(-1);
 
@@ -206,19 +231,9 @@ function Main() {
     </Content>
     <Pagination>
       <ul>
-        <li onClick={()=>{
-          (page === 1 ? alert("더 이상 페이지가 없습니다.") : setPage(page -1));
-        }}><NavLink to='/'>이전</NavLink></li>
-        {
-          data && PageList.map(e=>{
-            return(
-             e
-            )
-          })
-        }
-        <li onClick={()=>{
-          (page === totalPage ? alert("더 이상 페이지가 없습니다.") : setPage(page +1));
-        }}><NavLink to='/'>다음</NavLink></li>
+        <li onClick={PrevBlock}>이전</li>
+        {PageList}
+        <li onClick={NextBlock}>다음</li>
       </ul>
     </Pagination>
    </>
