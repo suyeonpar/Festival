@@ -89,6 +89,7 @@ const Pagination = styled.div`
     border-radius: 5px;
     cursor: pointer;
     padding: 5px 20px;
+    background-color: #fff;
     &.on{
       background-color: violet;
       font-weight: bold;
@@ -134,7 +135,7 @@ function Main() {
   const PageList = [];
   for(let i = startPage; i <= endPage; i++){
     PageList.push(
-      <li key={i} onClick={()=>{setPage(i)}}>
+      <li className={page === i ? 'on' : ''} key={i} onClick={()=>{setPage(i)}}>
         {i}
       </li>
     )
@@ -151,7 +152,7 @@ function Main() {
      axios.get(`https://apis.data.go.kr/6260000/FestivalService/getFestivalKr?serviceKey=${process.env.REACT_APP_APIKEY}&pageNo=${page}&numOfRows=10&resultType=json`).then(function(res){
       setData(res.data.getFestivalKr.item)
       setTotalCnt(res.data.getFestivalKr.totalCount);
-      // setTotalCnt(500); 테스트용으로 만든거
+      //setTotalCnt(500); //테스트용으로 만든거
     })
     //console.log(data)
   },[page])
@@ -165,19 +166,19 @@ function Main() {
   const FilterGugun = [...new Set(allDate && allDate.map(e => e.GUGUN_NM))];
   //console.log(FilterGugun)
   const [isActive, setIsActive] = useState(-1);
-  const [index, setIndex] = useState(-1);
+  //const [index, setIndex] = useState(-1);
 
   return (
    <>
     <Content>
       <Category>
-      <Item className={index === -1 ? 'on' : ''}>{`인덱스 번호 : -1`}</Item>
+      {/* <Item className={index === -1 ? 'on' : ''}>{`인덱스 번호 : -1`}</Item>
       { 
       Array(5).fill().map((e,i)=>{
           return(
             <Item className={index === i ? 'on' : ''} >{`인덱스 번호 : ${i}`}</Item>
           )
-        })}
+        })} */}
         <ul>
           <li className={isActive === -1 ? 'on' : ''} onClick={()=>{
             setIsActive(-1);
