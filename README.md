@@ -6,14 +6,14 @@
 
 images
 
----
+
 
 ### React API연동 연습의 최적화 🙌
  
 프론트엔드 개발자가 실무에서 가장 많이 쓴다는 API 연동하기.
 절대 빠트려서도, 연습을 안해서도 안된다!
 
-___
+
 ### 기술 스택
 
 
@@ -27,7 +27,7 @@ ___
 
 <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
 
-___
+
 
 ### API 연동하여 데이터 사용하기 ✍
 
