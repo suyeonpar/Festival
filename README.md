@@ -4,7 +4,8 @@
 
 ## Preveiw
 
-images
+![image](https://github.com/suyeonpar/Festival/assets/142365626/8eed8d5c-7343-434c-b905-bc4c5f37844a)
+
 
 
 
