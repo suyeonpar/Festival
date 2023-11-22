@@ -34,8 +34,6 @@ images
 
 ![image](https://github.com/suyeonpar/Festival/assets/142365626/2c3181d6-a61f-4ee7-b5af-a476e460a9bb)
 
-___
-
 
 ### API 연동하여 데이터 사용하기 ✍
 
@@ -47,7 +45,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-___
+
 
 ## Learn More
 
@@ -55,7 +53,7 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-___
+
 
 
 ### Code Splitting
